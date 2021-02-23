@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import os
 
 
 class SEC_Base:
@@ -53,13 +54,15 @@ class SEC_LinkScraper(SEC_Base):
         self.links = [self.base_url + i.attrs["href"] for i in links if "href" in i.attrs.keys() and (
             "/news/pressrelease/" in i.attrs["href"] or "/news/press-release" in i.attrs["href"])]
         print(f"GOT LINKS FOR {len(self.links)} ARTICLES IN YEAR {self.year}")
-        return self.links
+        # return self.links
 
     def scrape_articles(self):
         '''
         Get text for each article
         '''
         ctr = 0
+        dir_name = f"Year_{self.year}"
+        os.mkdir(dir_name)
         for url in self.links:
             print(f"Scraping article {ctr+1} in year {self.year}")
             ctr+=1
@@ -79,5 +82,13 @@ class SEC_LinkScraper(SEC_Base):
                 'p', {'class': 'article-location-publishdate'})[0].text.strip()
             at = Article(url, art_id, title, articletext, dateloc)
             self.articles.append(at)
+
+            file = open(f"{dir_name}/{art_id}.txt", 'w', encoding="utf-8")
+            file.write(title+'\n')
+            file.write(art_id+'\n')
+            file.write(dateloc+'\n')
+            file.write(articletext)
+            file.close()
+
         print(f"GOT {len(self.articles)} ARTICLES IN YEAR {self.year}")
-        return self.articles
+        # return self.articles

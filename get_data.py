@@ -25,3 +25,7 @@ each of these object in the form of files on disk
 
 Single File for all articles? One file for each year? Each article gets its own separate file?
 '''
+for year in years:
+    year_scraper = scraper.SEC_LinkScraper(year)
+    year_scraper.scrape_links()
+    year_scraper.scrape_articles()
