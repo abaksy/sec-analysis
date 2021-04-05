@@ -17,7 +17,7 @@ def load_fileslist():
         with open(filename, "wb") as f:
             pickle.dump(files_list, f)
         clean_filename = "cleanfileslist.pkl"
-        with open(filename, "wb") as f:
+        with open(clean_filename, "wb") as f:
             pickle.dump(clean_files_list, f)
     else:
         with open("fileslist.pkl", "rb") as f:
