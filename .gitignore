@@ -1,4 +1,6 @@
-Data
+Data/
+Clean_Data/
+*.pkl
 __pycache__/
 *.ipynb
 Year_*/
