@@ -10,3 +10,14 @@ at PES University, Bangalore
 * Remove stopwords
 * Sentence tokenization
 * Get n-grams from each sentence
+
+# How to run
+
+```
+$ git clone https://github.com/abaksy/sec-analysis
+$ cd sec-analysis
+$ mkdir Data
+$ pip3 install -r requirements.txt
+$ python3 get_data.py -s <start_year> -e <end_year>
+$ python3 clean.py
+```
