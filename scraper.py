@@ -61,7 +61,7 @@ class SEC_LinkScraper(SEC_Base):
         Get text for each article
         '''
         ctr = 0
-        dir_name = f"Year_{self.year}"
+        dir_name = f"Data/Year_{self.year}"
         os.mkdir(dir_name)
         for url in self.links:
             print(f"Scraping article {ctr+1} in year {self.year}")
