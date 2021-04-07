@@ -1,7 +1,11 @@
 import os
 import pickle
 from nltk.corpus import stopwords
+from nltk.stem import PorterStemmer
+from nltk.stem import WordNetLemmatizer
+from nltk.tokenize import word_tokenize, sent_tokenize
 import re
+import string
 
 
 def load_fileslist():
@@ -39,14 +43,34 @@ def make_clean_dir():
     for data_dir in os.listdir("./Data"):
         os.mkdir(f"Clean_Data/{data_dir}")
 
+punkt = list(string.punctuation)
 
-def cleanText(text: str):
+def cleanText(text: str, mode = "list"):
+    stemmer = PorterStemmer()
+    lem = WordNetLemmatizer()
     lowercase_text = text.lower()
-    stopword_removed_text = stopword_remover(lowercase_text)
-    symbols_removed = re.sub(r"\W+|_", " ", stopword_removed_text)
-    # Lemmatization?
-    clean_text = symbols_removed
-    return clean_text
+    sentences = sent_tokenize(lowercase_text)
+    document = list()
+    doc_word_list = list()
+    for sent in sentences:
+        lemmas = list()
+        words = word_tokenize(sent)
+        for w in words:
+            lem_word = lem.lemmatize(w)
+            lemmas.append(lem_word)
+        sentence = ' '.join(lemmas)
+        document.append(sentence)
+        doc_word_list += lemmas
+    if mode == "string":
+        clean_text = ' '.join(document)
+        #print("CLEAN:", clean_text)
+        clean_text = re.sub(r'[^\w\s]', '', clean_text)
+        clean_text = stopword_remover(clean_text)
+        return clean_text
+    else:
+        sw_removed_wordlist = [word for word in doc_word_list if word not in stop + punkt]
+        return sw_removed_wordlist
+
 
 
 if __name__ == "__main__":
@@ -62,7 +86,8 @@ if __name__ == "__main__":
                 title, art_id, place_date = content[:3]
                 text = content[3:]
                 text = '\n'.join(text)
-                clean_text = cleanText(text)
+                clean_text = cleanText(text, mode="string")
+                print("Clean text of length:", len(clean_text))
                 f1 = open(clean_fname, "w")
                 f1.write(f"{title}\n{art_id}\n{place_date}\n{clean_text}\n")
                 f1.close()

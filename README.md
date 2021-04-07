@@ -20,4 +20,6 @@ $ mkdir Data
 $ pip3 install -r requirements.txt
 $ python3 get_data.py -s <start_year> -e <end_year>
 $ python3 clean.py
+$ python3 topic_model.py
+$ python3 read_lda_model.py
 ```
