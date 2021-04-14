@@ -1,8 +1,7 @@
-Data/
-Clean_Data/
+Data*/
+Clean_Data*/
 *.pkl
 __pycache__/
-*.ipynb
 Year_*/
 lda.model*
 log*
