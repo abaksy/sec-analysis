@@ -4,4 +4,5 @@ Clean_Data*/
 __pycache__/
 Year_*/
 lda.model*
-log*.ipynb_checkpoints/
+log*
+.ipynb_checkpoints/
