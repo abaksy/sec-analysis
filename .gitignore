@@ -1,5 +1,5 @@
 Data*/
-Clean_Data*/
+.vscode/
 *.pkl
 __pycache__/
 Year_*/

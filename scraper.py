@@ -65,7 +65,7 @@ class SEC_LinkScraper(SEC_Base):
         os.mkdir(dir_name)
         for url in self.links:
             print(f"Scraping article {ctr+1} in year {self.year}")
-            ctr+=1
+            ctr += 1
             html = requests.get(url).text
             soup = BeautifulSoup(html, "html.parser")
             at1 = [i.text for i in soup.find(
