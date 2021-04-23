@@ -12,6 +12,7 @@ at PES University, Bangalore
 * Get n-grams from each sentence
 
 # How to run
+Scrape and clean data:
 
 ```
 $ git clone https://github.com/abaksy/sec-analysis
@@ -20,6 +21,9 @@ $ mkdir Data
 $ pip3 install -r requirements.txt
 $ python3 get_data.py -s <start_year> -e <end_year>
 $ python3 clean.py
-$ python3 topic_model.py
-$ python3 read_lda_model.py
+```
+
+Tf-IDF based search engine
+```
+$ python3 search_engine.py
 ```
