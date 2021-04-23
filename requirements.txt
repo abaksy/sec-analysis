@@ -1,3 +1,8 @@
 nltk==3.5
 beautifulsoup4==4.9.3
 gensim==4.0.1
+pyLDAvis==3.3.1
+pandas==1.2.3
+numpy==1.20.2
+matplotlib==3.4.1
+scikit-learn==0.24.1
