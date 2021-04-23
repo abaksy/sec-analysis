@@ -176,17 +176,17 @@ def tfidf_cleaner(data, art_ids):
                     to_replace=" ", value='', regex=True)
                 clean_df = clean_df.replace(
                     to_replace='\]', value='', regex=True)
-        clean_df.loc[index, "Art_ID"] = art_id
+        clean_df.loc[index, "Article_ID"] = art_id
     return clean_df
 
 
 df1 = get_clean_data_df()
 df1 = label_clean_data(df1)
-df1.to_csv("Clean_Data.csv")
+df1.to_csv("Clean_Data.csv", index=False)
 
 clean_texts = df1["Clean_Text"]
 art_ids = list(df1["Article_ID"])
 clean_texts = [eval(x) for x in clean_texts]
 
 output = tfidf_cleaner(clean_texts, art_ids)
-output.to_csv("textclean.csv")
+output.to_csv("textclean.csv", index=False)
