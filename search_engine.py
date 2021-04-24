@@ -1,22 +1,5 @@
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-
-from nltk.stem import WordNetLemmatizer
-from nltk.stem import PorterStemmer
-from nltk.tokenize import word_tokenize, sent_tokenize
-from nltk import pos_tag
-from nltk.corpus import stopwords
-
-from gensim import models
-from gensim.corpora import Dictionary
-
-import re
-import string
-import sys
-import os
-import pickle
-
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 # Construct vocabulary for TF-IDF
