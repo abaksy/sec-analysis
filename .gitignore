@@ -1,5 +1,6 @@
 Data*/
 .vscode/
+output.txt
 *.pkl
 __pycache__/
 Year_*/
