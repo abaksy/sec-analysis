@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
+from nltk.tokenize import word_tokenize
+from nltk.stem import WordNetLemmatizer
 
 # Construct vocabulary for TF-IDF
 df = pd.read_csv("textclean.csv")
@@ -42,10 +44,18 @@ def display_articles(article_ids, query):
             print(raw_text)
             f.write(f"ARTICLE ID: {item[0]}\n{raw_text}\n\n")
 
+def clean_query(query):
+    lem = WordNetLemmatizer()
+    query = word_tokenize(query)
+    clean_query = list()
+    for word in query:
+        clean_query.append(lem.lemmatize(word))
+    return clean_query
 
 def get_similar_articles(query, df):
-    print("Query:", query)
-    query = [query]
+    #print("Query:", query)
+    query = clean_query(query)
+    print(query)
     similar_articles = list()
     q_vec = vectorizer.transform(query).toarray().reshape(df.shape[0],)
     #print("Query vector:", q_vec)
