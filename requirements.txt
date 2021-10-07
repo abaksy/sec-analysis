@@ -1,4 +1,4 @@
-nltk==3.5
+nltk>=3.6.4
 beautifulsoup4==4.9.3
 gensim==4.0.1
 pyLDAvis==3.3.1
