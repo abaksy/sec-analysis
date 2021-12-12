@@ -182,11 +182,11 @@ def tfidf_cleaner(data, art_ids):
 
 df1 = get_clean_data_df()
 df1 = label_clean_data(df1)
-df1.to_csv("Clean_Data.csv", index=False)
+df1.to_csv("../data/Clean_Data.csv", index=False)
 
 clean_texts = df1["Clean_Text"]
 art_ids = list(df1["Article_ID"])
 clean_texts = [eval(x) for x in clean_texts]
 
 output = tfidf_cleaner(clean_texts, art_ids)
-output.to_csv("textclean.csv", index=False)
+output.to_csv("../data/textclean.csv", index=False)

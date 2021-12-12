@@ -5,7 +5,7 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 
 # Construct vocabulary for TF-IDF
-df = pd.read_csv("textclean.csv")
+df = pd.read_csv("../data/textclean.csv")
 docs = list(df["Keyword_final"])
 art_ids = list(df["Article_ID"])
 vocab = set()
